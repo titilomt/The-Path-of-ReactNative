@@ -3,16 +3,18 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   render() {
-    const { Container, TextStyle, ButtonStyle } = styles; 
+    
+    const { textStyle, buttonStyle } = cssStyles; 
+    
     return (
-      <View style={Container}>
-        <Image source={require('./imgs/logo.png')}></Image>
+      <View style={styles.container}>
+        <Image source={require('./imgs/logo.png')}/>
         
         <TouchableOpacity 
-          style={ButtonStyle}
+          style={buttonStyle}
           onPress={_=>{genaratePhrase()}}
         >
-          <Text style={TextStyle}>Daily Phrases</Text>
+          <Text style={textStyle}>Daily Phrases</Text>
         </TouchableOpacity>
       
       </View>
@@ -39,13 +41,7 @@ const genaratePhrase = _=> {
   alert(p);
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'skyblue',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
+const cssStyles = {
   textStyle:{
     fontSize: 20,
     color: 'white',
@@ -55,5 +51,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#538530',
     paddingVertical: 10,
     paddingHorizontal: 40
+  }
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
