@@ -3,13 +3,14 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Button, 
-  Image 
+  Button
 } from 'react-native';
+import UpperImg from './src/components/UpperImg';
+import Icone    from './src/components/Icone';
 
 export default class App extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = { 
@@ -19,44 +20,47 @@ export default class App extends React.Component {
     };
   };
 
-  jokenpo(userChoise){
-    let num = Math.floor(Math.random() * 3);
-    let r = '';
+  jokenpo(userChoise) {
+    const num = Math.floor(Math.random() * 3);
     
-    switch(num){
-      case 0: r = 'jan'; break;
-      case 1: r = 'ken'; break;
-      case 2: r = 'po'; break;
+    let computerChoise = '';
+    
+    switch(num) {
+      case 0: computerChoise = 'jan'; break;
+      case 1: computerChoise = 'ken'; break;
+      case 2: computerChoise = 'po'; break;
+      default: computerChoise = ''; break;
     }
 
     let result = '';
 
-    if(userChoise == 'jan') {
-      if(r == 'jan') result = 'Draw Game'
-      else if (r == 'ken') result = 'Computer Win'
+    if(userChoise === 'jan') {
+      if(computerChoise === 'jan') result = 'Draw Game'
+      else if (computerChoise === 'ken') result = 'Computer Win'
       else result = 'You Win Gratulations'
-    } else if(userChoise == 'ken') {
-      if(r == 'jan') result = 'You Win Gratulations'
-      else if (r == 'ken') result = 'Draw Game'
+    } else if(userChoise === 'ken') {
+      if(computerChoise === 'jan') result = 'You Win Gratulations'
+      else if (computerChoise === 'ken') result = 'Draw Game'
       else result = 'Computer Win noob'
-    } else if(userChoise == 'po') {
-      if(r == 'jan') result = 'Brutal, Savage, Reckt'
-      else if (r == 'ken') result = 'Gratulations You Win'
+    } else if(userChoise === 'po') {
+      if(computerChoise === 'jan') result = 'Brutal, Savage, Reckt'
+      else if (computerChoise === 'ken') result = 'Gratulations You Win'
       else result = 'Draw!'
     }
 
-    this.setState({ 
-      userChoise     : userChoise, 
-      computerChoise : r, 
-      result         : result 
-    });
+    this.setState( { 
+      userChoise, 
+      computerChoise, 
+      result 
+    } );
   };
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>        
         
-        <UpperImg></UpperImg>
+        <UpperImg />
+        
         <View style={styles.actionPainel}>
           <View style={styles.btnChoose}>
             <Button
@@ -83,21 +87,21 @@ export default class App extends React.Component {
         <View style={styles.showTime}>
           
           <Text style={styles.txtResult}>{this.state.result}</Text>
-          <Text>Choose your fighter: {this.state.computerChoise}</Text>
-          <Text>Meh: {this.state.userChoise}</Text>
           
+          <Icone choise={this.state.userChoise} player='Player' />
+
+          <Icone choise={this.state.computerChoise} player='Computer' />
         </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#AAEDF9',
+    paddingTop: 13
   },
   btnChoose: {
     width: 90
@@ -114,19 +118,7 @@ const styles = StyleSheet.create({
   txtResult: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: 'red'
-  },
-  imgMargin: {
-    marginTop: 10
+    color: '#FC858B',
+    height: 60
   }
-});
-
-class UpperImg extends React.Component {
- render() {
-   return (
-    <View style={styles.imgMargin}>
-      <Image source={require('./img/jokenpo.png')}/>
-    </View>
-   );
- }
-}
+} );
