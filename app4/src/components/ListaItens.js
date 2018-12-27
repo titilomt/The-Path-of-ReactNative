@@ -1,12 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+import Itens from './Itens';
+import axios from 'axios';
 
 export default class ListaItens extends React.Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = { listaItens: []};
+  }
+
+  componentWillMount(){
+    axios.get('http://faus.com.br/recursos/c/dmairr/api/itens.html').then(results => {
+      this.setState({ listaItens: results.data });
+    }).catch(err => {console.log(err)});
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-          <Text>JSIIDSF</Text>
-      </View>
+      <ScrollView style={styles.container}>
+        { this.state.listaItens.map(item => {
+          return (<Itens key={item.titulo} item={item}/>)
+        })}
+      </ScrollView>
     );
   }
 }
@@ -14,8 +31,6 @@ export default class ListaItens extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: '#DDD'
+  }
 });
