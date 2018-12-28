@@ -1,21 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Navigator } from 'react-native';
+import Principal from './src/components/Principal';
+import Client from './src/components/Client';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Navigator 
+        initialRoute={{ id: 'a' }}
+        renderScene={(route, navigator) => {
+          if(route.id === 'a'){
+            return (<Principal navigator={navigator} />);
+          } else if (route.id === 'b') {
+            return (<Client />);
+          }
+        }}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
