@@ -15,7 +15,7 @@ export default class Principal extends React.Component {
             <StatusBar 
                 backgroundColor='#CCC'
             />
-            <NavBar />
+            <NavBar goBack/>
 
             <View style={styles.logoImg}>
                 <Image source={logo} />
@@ -24,18 +24,45 @@ export default class Principal extends React.Component {
             <View style={styles.menu}>
                 <View style={styles.menuGruop}>
                     <TouchableHighlight
+                        underlayColor={'#B9C941'}
+                        activeOpacity={0.3}
                         onPress={_=>{
-                            this.props.navigator.push({id: 'b'});
+                            this.props.navigator.push({id: 'cliente'});
                         }}
                     >
                         <Image style={styles.imgMenu} source={menuClient} />
                     </TouchableHighlight>
-                    
-                    <Image style={styles.imgMenu} source={menuContact} />
+
+                    <TouchableHighlight
+                        underlayColor={'#61BD8C'}
+                        activeOpacity={0.3}
+                        onPress={_=>{
+                            this.props.navigator.push({id: 'contato'});
+                        }}
+                    >
+                        <Image style={styles.imgMenu} source={menuContact} />
+                    </TouchableHighlight>
                 </View>
                 <View style={styles.menuGruop}>
-                    <Image style={styles.imgMenu} source={menuEnterprise} />
-                    <Image style={styles.imgMenu} source={menuService} />
+                    <TouchableHighlight
+                        underlayColor={'#EC7148'}
+                        activeOpacity={0.3}
+                        onPress={_=>{
+                            this.props.navigator.push({id: 'empresa'});
+                        }}
+                    >
+                        <Image style={styles.imgMenu} source={menuEnterprise} />
+                    </TouchableHighlight>
+                    
+                    <TouchableHighlight
+                        underlayColor={'#19D1C8'}
+                        activeOpacity={0.3}
+                        onPress={_=>{
+                            this.props.navigator.push({id: 'servico'});
+                        }}
+                    >
+                        <Image style={styles.imgMenu} source={menuService} />
+                    </TouchableHighlight>
                 </View>
             </View>
         </View>    

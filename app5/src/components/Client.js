@@ -9,11 +9,12 @@ const client2 = require('../img/cliente2.png');
 export default class Principal extends React.Component {
   render() {
     return (
-        <View>
+        <View style={{ flex: 1, backgroundColor: '#FFF' }}>
             <StatusBar 
-                backgroundColor='#CCC'
+                backgroundColor='#B9C941'
             />
-            <NavBar />
+
+            <NavBar goBack navigator={this.props.navigator} colorBackground='#B9C941'/>
 
             <View style={styles.headerClient}>
                 <Image source={detailClient}/>
