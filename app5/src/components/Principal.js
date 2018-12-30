@@ -10,12 +10,14 @@ const menuService = require('../img/menu_servico.png');
 
 export default class Principal extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
+    
     return (
         <View>
             <StatusBar 
                 backgroundColor='#CCC'
             />
-            <NavBar goBack/>
+            <NavBar navigate={navigate}/>
 
             <View style={styles.logoImg}>
                 <Image source={logo} />
@@ -27,7 +29,7 @@ export default class Principal extends React.Component {
                         underlayColor={'#B9C941'}
                         activeOpacity={0.3}
                         onPress={_=>{
-                            this.props.navigator.push({id: 'cliente'});
+                            navigate('Client');
                         }}
                     >
                         <Image style={styles.imgMenu} source={menuClient} />
@@ -37,7 +39,7 @@ export default class Principal extends React.Component {
                         underlayColor={'#61BD8C'}
                         activeOpacity={0.3}
                         onPress={_=>{
-                            this.props.navigator.push({id: 'contato'});
+                            navigate('Contacts');
                         }}
                     >
                         <Image style={styles.imgMenu} source={menuContact} />
@@ -48,7 +50,7 @@ export default class Principal extends React.Component {
                         underlayColor={'#EC7148'}
                         activeOpacity={0.3}
                         onPress={_=>{
-                            this.props.navigator.push({id: 'empresa'});
+                            navigate('Emprise');
                         }}
                     >
                         <Image style={styles.imgMenu} source={menuEnterprise} />
@@ -58,7 +60,7 @@ export default class Principal extends React.Component {
                         underlayColor={'#19D1C8'}
                         activeOpacity={0.3}
                         onPress={_=>{
-                            this.props.navigator.push({id: 'servico'});
+                            navigate('Services');
                         }}
                     >
                         <Image style={styles.imgMenu} source={menuService} />

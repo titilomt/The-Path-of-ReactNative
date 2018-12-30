@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StatusBar, StyleSheet, Image, View, Text } from 'react-native';
 import NavBar from './NavBar';
 
 const detailContacts = require('../img/detalhe_contato.png');
@@ -11,7 +11,7 @@ export default class Contacts extends React.Component {
             <StatusBar 
                 backgroundColor='#61BD8C'
             />
-            <NavBar goBack navigator={this.props.navigator} colorBackground='#61BD8C' />
+            <NavBar goBack navigation={this.props.navigation} colorBackground='#61BD8C' />
 
             <View style={styles.headerContacts}>
                 <Image source={detailContacts}/>

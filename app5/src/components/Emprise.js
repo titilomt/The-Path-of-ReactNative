@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StatusBar, StyleSheet, Image, View, Text } from 'react-native';
 import NavBar from './NavBar';
 
 const detailEmprise = require('../img/detalhe_empresa.png');
@@ -12,7 +12,7 @@ export default class Emprise extends React.Component {
                 backgroundColor='#EC7148'
             />
 
-            <NavBar goBack navigator={this.props.navigator} colorBackground='#EC7148' />
+            <NavBar goBack navigation={this.props.navigation} colorBackground='#EC7148' />
 
             <View style={styles.headerEmprise}>
                 <Image source={detailEmprise}/>

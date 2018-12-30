@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StatusBar, StyleSheet, View, Text, Image } from 'react-native';
 import NavBar from './NavBar';
 
 const detailServices = require('../img/detalhe_servico.png');
@@ -12,7 +12,7 @@ export default class Services extends React.Component {
                 backgroundColor='#19D1C8'
             />
             
-            <NavBar goBack navigator={this.props.navigator} colorBackground='#19D1C8' />
+            <NavBar goBack navigation={this.props.navigation} colorBackground='#19D1C8' />
 
             <View style={styles.headerService}>
                 <Image source={detailServices}/>

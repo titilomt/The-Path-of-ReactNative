@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StatusBar, StyleSheet, View, Text, Image } from 'react-native';
 import NavBar from './NavBar';
 
 const detailClient = require('../img/detalhe_cliente.png');
@@ -7,30 +7,34 @@ const client1 = require('../img/cliente1.png');
 const client2 = require('../img/cliente2.png');
 
 export default class Principal extends React.Component {
-  render() {
-    return (
-        <View style={{ flex: 1, backgroundColor: '#FFF' }}>
-            <StatusBar 
-                backgroundColor='#B9C941'
-            />
+    constructor(props){
+        super(props);
+    }
 
-            <NavBar goBack navigator={this.props.navigator} colorBackground='#B9C941'/>
+    render() {
+        return (
+            <View style={{ flex: 1, backgroundColor: '#FFF' }}>
+                <StatusBar 
+                    backgroundColor='#B9C941'
+                />
 
-            <View style={styles.headerClient}>
-                <Image source={detailClient}/>
-                <Text style={styles.txtTitle}>Nossos Clientes</Text>    
+                <NavBar goBack navigation={this.props.navigation} colorBackground='#B9C941'/>
+
+                <View style={styles.headerClient}>
+                    <Image source={detailClient}/>
+                    <Text style={styles.txtTitle}>Nossos Clientes</Text>    
+                </View>
+                <View style={styles.clientDetail}>
+                    <Image source={client1}/>
+                    <Text style={styles.txtDetail}>Lorem ipsum dolorem</Text>
+                </View>
+                <View style={styles.clientDetail}>
+                    <Image source={client2}/>
+                    <Text style={styles.txtDetail}>Lorem ipsum dolorem</Text>    
+                </View>
             </View>
-            <View style={styles.clientDetail}>
-                <Image source={client1}/>
-                <Text style={styles.txtDetail}>Lorem ipsum dolorem</Text>
-            </View>
-            <View style={styles.clientDetail}>
-                <Image source={client2}/>
-                <Text style={styles.txtDetail}>Lorem ipsum dolorem</Text>    
-            </View>
-        </View>
-    );
-  }
+        );
+    }
 }
 
 const styles = StyleSheet.create({
